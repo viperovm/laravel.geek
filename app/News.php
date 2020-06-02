@@ -9,7 +9,7 @@ class News extends Model
 {
 
     protected $fillable = [
-        'name', 'title', 'excerpt', 'text', 'thumb_square', 'thumb_43', 'thumb_169', 'thumb_169_big', 'img', 'author_id', 'category_id', 'is_local', 'is_hidden', 'views', 'rating', 'comments'
+        'name', 'title', 'excerpt', 'text', 'img', 'author_id', 'category_id', 'is_local', 'is_hidden', 'views', 'rating', 'comments'
     ];
 
     public static function getRequest()

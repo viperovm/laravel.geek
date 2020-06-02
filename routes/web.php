@@ -53,15 +53,21 @@ Route::group([
     'middleware' => ['auth', 'is.admin']
 ], function () {
     Route::get('/index', 'IndexController@index')->name('index');
+
     Route::get('/category-management', 'CategoryController@index')->name('category-management');
     Route::get( '/create-category', 'CategoryController@create')->name('category-create');
-    Route::match(['get', 'post'], '/store-category', 'CategoryController@store')->name('store-category');
-    Route::match(['get', 'post'], '/update-category/{category}', 'CategoryController@edit')->name('edit-category');
-    Route::match(['get', 'post'], '/delete-category/{category}', 'CategoryController@destroy')->name('destroy-category');
-    Route::get('/news-management', 'NewsController@all')->name('news-management');
-    Route::match(['get', 'post'], '/create-news', 'NewsController@add')->name('create-news');
-    Route::match(['get', 'post'], '/update-news/{news}', 'NewsController@update')->name('update-news');
-    Route::match(['get', 'post'], '/delete-news/{news}', 'NewsController@delete')->name('delete-news');
+    Route::match(['get', 'post'], '/store-category', 'CategoryController@store')->name('category-store');
+    Route::match(['get', 'post'], '/edit-category/{category}', 'CategoryController@edit')->name('category-edit');
+    Route::match(['get', 'post'], '/update-category/{category}', 'CategoryController@update')->name('category-update');
+    Route::match(['get', 'post'], '/delete-category/{category}', 'CategoryController@destroy')->name('category-destroy');
+
+    Route::get('/news-management', 'NewsController@index')->name('news-management');
+    Route::get( '/create-news', 'NewsController@create')->name('news-create');
+    Route::match(['get', 'post'], '/store-news', 'NewsController@store')->name('news-store');
+    Route::match(['get', 'post'], '/edit-news/{news}', 'NewsController@edit')->name('news-edit');
+    Route::match(['get', 'post'], '/update-news/{news}', 'NewsController@update')->name('news-update');
+    Route::match(['get', 'post'], '/delete-news/{news}', 'NewsController@destroy')->name('news-destroy');
+
     Route::get('/user-management', 'UserController@all')->name('user-management');
     Route::match(['get', 'post'], '/create-user', 'UserController@add')->name('create-user');
     Route::match(['get', 'post'], '/update-user/{user}', 'UserController@update')->name('update-user');

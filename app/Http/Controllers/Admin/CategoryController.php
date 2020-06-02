@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +18,7 @@ class CategoryController extends Controller
     {
         $content = Category::All();
 
-        return view('admin.category-management')->
-        with('category', $content);
+        return view('admin.category-management')->with('category', $content);
     }
 
     /**
@@ -39,10 +39,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         $category = new Category();
-        $category->name = $request->name;
-        $category->slug = $request->slug;
+        $category->fill($request->all());
         $category->save();
 
         return redirect()->route('admin.category-management')->with('success', 'Категория успешно создана!');
@@ -68,7 +66,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.category-edit')->with('category', $category);
     }
 
     /**
@@ -80,7 +78,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->fill($request->all());
+        $category->save();
+
+        return redirect()->route('admin.category-management')->with('success', 'Категория успешно отредактирована!');
     }
 
     /**
@@ -91,6 +92,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('admin.category-management')->with('success', 'Категория успешно удалена!');
     }
 }

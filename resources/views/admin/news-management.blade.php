@@ -1,60 +1,86 @@
 @extends('layouts.admin')
 @section('title')
-    @parent Управление материалами
+    @parent Управление статьями
 @endsection
 @section('content')
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-        <div class="container">
-            <div class="row justify-content-center">
-                <h2>
-                    Страница управления материалами
-                </h2>
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <form method="POST">
-                                <div class="form-group">
-                                    <label for="newsTitle">Название новости</label>
-                                    <input name="title" type="text" class="form-control" id="newsTitle"
-                                           value="{{ old('title') }}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="newsCategory">Категория</label>
-                                    <select name="category" class="form-control" id="newsCategory">
-                                        @foreach($categories as $item)
-                                            value="{{ $item['id'] }}">{{ $item['name'] }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="newsText">Краткое описание новости</label>
-                                    <textarea name="text" class="form-control" rows="5"
-                                              id="newsExcerpt">{{ old('text') }}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="newsText">Текст новости</label>
-                                    <textarea name="text" class="form-control" rows="5"
-                                              id="newsText">{{ old('text') }}</textarea>
-                                </div>
-                                <div class="form-check">
-                                    <input @if (old('isPrivate') == 1) checked @endif name="isPrivate"
-                                           class="form-check-input" type="checkbox" value="1"
-                                           id="newsPrivate">
-                                    <label class="form-check-label" for="newsPrivate">
-                                        Новость private?
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" class="btn btn-outline-primary" value="Добавить новость"
-                                           id="addNews">
-                                </div>
-                            </form>
 
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Управление статьями</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Главная</a></li>
+                            <li class="breadcrumb-item active">Управление статьями</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+
+        <div class="container">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-8"><h2>Список статей</h2></div>
+                        <div class="col-sm-4">
+                            <a href="{{ route('admin.news-create') }}" type="button" class="btn btn-dark add-new"><i class="fa fa-plus"></i> Добавить статью</a>
                         </div>
                     </div>
                 </div>
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">
+
+                            <div class="row">
+                                <div class="col">id</div>
+                                <div class="col-7">Название статьи</div>
+                                <div class="col-2">Действия</div>
+                            </div>
+
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($news as $item)
+
+                        <tr>
+                            <td>
+                                <div class="row">
+                                    <div class="col">{{ $item->id }}</div>
+                                    <div class="col-6">{{ $item->name }}</div>
+                                    <div class="col table-buttons">
+                                        <a href="{{ route('admin.news-edit', $item) }}" class="btn btn-primary">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="{{ route('admin.news-destroy', $item->id) }}">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                    @endforeach
+                    </tbody>
+                </table>
+                {{ $news->links() }}
+
             </div>
         </div>
-    </main>
+    </div>
+
 @endsection
+
 

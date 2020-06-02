@@ -59,17 +59,12 @@
                                         <div class="col">{{ $item->id }}</div>
                                         <div class="col-6">{{ $item->name }}</div>
                                         <div class="col table-buttons">
-
-                                            <a href="{{ route('admin.edit-category', $item->id) }}" class="btn btn-primary">
+                                            <a href="{{ route('admin.category-edit', $item) }}" class="btn btn-primary">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
-                                            <form class="button-form" method="POST" action="{{ route('admin.destroy-category', $item->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">
+                                            <a class="btn btn-danger" href="{{ route('admin.category-destroy', $item->id) }}">
                                                     <i class="fa fa-trash"></i>
-                                                </button>
-                                            </form>
+                                            </a>
 
                                         </div>
                                     </div>

@@ -19,11 +19,11 @@ class News extends Migration
             $table->string('name');
             $table->string('title');
             $table->string('excerpt');
-            $table->text('text');
-            $table->string('thumb_square');
-            $table->string('thumb_43');
-            $table->string('thumb_169');
-            $table->string('thumb_169_big');
+            $table->text('text')->default(null);
+            $table->string('thumb_square')->default(null);
+            $table->string('thumb_43')->default(null);
+            $table->string('thumb_169')->default(null);
+            $table->string('thumb_169_big')->default(null);
             $table->string('img');
             $table->integer('author_id');
             $table->integer('category_id');

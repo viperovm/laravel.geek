@@ -33,7 +33,7 @@ class NewsSeeder extends Seeder
                 'thumb_169_big' => $faker->imageUrl($width = 730, $height = 346),
                 'img' => $faker->imageUrl($width = 1600, $height = 758),
                 'author_id' => $faker->numberBetween($min = 1, $max = 5),
-                'category_id' => $faker->numberBetween($min = 3, $max = 12),
+                'category_id' => $faker->numberBetween($min = 4, $max = 12),
                 'is_local' => (boolean)rand(0,1),
                 'is_hidden' => (boolean)rand(0,1),
                 'views' => $faker->numberBetween($min = 0, $max = 100),

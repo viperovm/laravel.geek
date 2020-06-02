@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Author;
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\News;
 use Illuminate\Http\Request;
@@ -15,7 +17,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $news = News::query()->paginate(20);
+        return view('admin.news-management')->with('news', $news);
     }
 
     /**
@@ -25,7 +28,9 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::all();
+        $author = Author::all();
+        return view('admin.news-create')->with(['category' => $category, 'author' => $author]);
     }
 
     /**
@@ -36,7 +41,11 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $news = new News();
+        $news->fill($request->all());
+        $news->save();
+
+        return redirect()->route('admin.news-management')->with('success', 'Статья успешно создана!');
     }
 
     /**
@@ -56,9 +65,12 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
+
     public function edit(News $news)
     {
-        //
+        $category = Category::all();
+        $author = Author::all();
+        return view('admin.news-edit')->with(['news' => $news, 'category' => $category, 'author' => $author]);
     }
 
     /**
@@ -68,9 +80,13 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, News $news)
+    public function update(Request $request, News $news, Category $category)
     {
-        //
+
+        $news->fill($request->all());
+        $news->save();
+
+        return redirect()->route('admin.news-management')->with('success', 'Статья успешно отредактирована!');
     }
 
     /**
@@ -81,6 +97,7 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        $news->delete();
+        return redirect()->route('admin.category-management')->with('success', 'Статья успешно удалена!');
     }
 }
