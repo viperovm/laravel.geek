@@ -24,14 +24,14 @@ class News extends Migration
             $table->string('thumb_43')->default(null);
             $table->string('thumb_169')->default(null);
             $table->string('thumb_169_big')->default(null);
-            $table->string('img');
-            $table->integer('author_id');
-            $table->integer('category_id');
+            $table->string('img')->default(null);
+            $table->integer('author_id')->default(null);
+            $table->integer('category_id')->default(null);
             $table->boolean('is_local')->default(false);
             $table->boolean('is_hidden')->default(false);
-            $table->integer('views');
-            $table->integer('rating');
-            $table->integer('comments');
+            $table->integer('views')->default(null);
+            $table->integer('rating')->default(null);
+            $table->integer('comments')->default(null);
 
         });
     }

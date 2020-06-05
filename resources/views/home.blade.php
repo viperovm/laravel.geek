@@ -10,7 +10,7 @@
         <div class="banner-top-thumb-wrap">
             <div class="d-lg-flex justify-content-between align-items-center">
 
-                @foreach($content['most_commented'] as $item)
+                @foreach($content['culture'] as $item)
 
                     <a class="d-flex justify-content-between  mb-3 mb-lg-0 thumb-menu-item"
                        href="{{ route('news.one', [$item->slug, $item->id]) }}">
@@ -79,7 +79,7 @@
                                         class="img-xs img-rounded mr-2"
                                         alt="thumb"
                                     />
-                                    <span class="fs-12 text-muted">Henry Itondo</span>
+                                    <span class="fs-12 text-muted">{{ $content['slider'][$i]->author }}</span>
                                 </div>
                                 <a href="{{ route('news.one', [$content['slider'][$i]->slug, $content['slider'][$i]->id]) }}" class="fs-14 m-0 font-weight-medium line-height-sm color-black">
                                     {{ $content['slider'][$i]->title }}
@@ -99,7 +99,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="d-flex position-relative float-left">
-                        <h3 class="section-title">События в России</h3>
+                        <h3 class="section-title">Политика</h3>
                     </div>
                 </div>
             </div>
@@ -112,18 +112,18 @@
 
                             <div class="position-relative image-hover">
                                 <img
-                                    src="{{ $content['local'][$i]->thumb_43 }}"
+                                    src="{{ $content['politics'][$i]->thumb_43 }}"
                                     class="img-fluid"
                                     alt="world-news"
                                 />
-                                <span class="thumb-title">{{ $content['local'][$i]->name }}</span>
+                                <span class="thumb-title">{{ $content['politics'][$i]->name }}</span>
                             </div>
-                            <a class="color-black" href="{{ route('news.one', [$content['local'][$i]->slug, $content['local'][$i]->id]) }}">
+                            <a class="color-black" href="{{ route('news.one', [$content['politics'][$i]->slug, $content['politics'][$i]->id]) }}">
                                 <h1 class="font-weight-600 mt-3">
-                                    {{ $content['local'][$i]->title }}
+                                    {{ $content['politics'][$i]->title }}
                                 </h1>
                                 <p class="fs-15 font-weight-normal">
-                                    {{ $content['local'][$i]->excerpt }}
+                                    {{ $content['politics'][$i]->excerpt }}
                                 </p>
                             </a>
 
@@ -140,18 +140,18 @@
                             <div class="col-sm-6  mb-5 mb-sm-2">
                                 <div class="position-relative image-hover">
                                     <img
-                                        src="{{ $content['local'][$i]->thumb_169 }}"
+                                        src="{{ $content['politics'][$i]->thumb_169 }}"
                                         class="img-fluid"
                                         alt="world-news"
                                     />
-                                    <span class="thumb-title">{{ $content['local'][$i]->name }}</span>
+                                    <span class="thumb-title">{{ $content['politics'][$i]->name }}</span>
                                 </div>
-                                <a class="color-black" href="{{ route('news.one', [$content['local'][$i]->slug, $content['local'][$i]->id]) }}">
+                                <a class="color-black" href="{{ route('news.one', [$content['politics'][$i]->slug, $content['politics'][$i]->id]) }}">
                                     <h5 class="font-weight-600 mt-3">
-                                        {{ $content['local'][$i]->title }}
+                                        {{ $content['politics'][$i]->title }}
                                     </h5>
                                     <p class="fs-15 font-weight-normal">
-                                        {{ $content['local'][$i]->excerpt }}
+                                        {{ $content['politics'][$i]->excerpt }}
                                     </p>
                                 </a>
                             </div>
@@ -206,7 +206,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="d-flex position-relative float-left">
-                        <h3 class="section-title">События в Мире</h3>
+                        <h3 class="section-title">Экономика</h3>
                     </div>
                 </div>
             </div>
@@ -217,18 +217,18 @@
 
                         <div class="position-relative image-hover">
                             <img
-                                src="{{ $content['world'][$i]->thumb_43 }}"
+                                src="{{ $content['economics'][$i]->thumb_43 }}"
                                 class="img-fluid"
                                 alt="world-news"
                             />
-                            <span class="thumb-title">{{ $content['world'][$i]->name }}</span>
+                            <span class="thumb-title">{{ $content['economics'][$i]->name }}</span>
                         </div>
-                        <a class="color-black" href="{{ route('news.one', [$content['world'][$i]->slug, $content['world'][$i]->id]) }}">
+                        <a class="color-black" href="{{ route('news.one', [$content['economics'][$i]->slug, $content['economics'][$i]->id]) }}">
                             <h1 class="font-weight-600 mt-3">
-                                {{ $content['world'][$i]->title }}
+                                {{ $content['economics'][$i]->title }}
                             </h1>
                             <p class="fs-15 font-weight-normal">
-                                {{ $content['world'][$i]->excerpt }}
+                                {{ $content['economics'][$i]->excerpt }}
                             </p>
                         </a>
 
@@ -244,18 +244,18 @@
                             <div class="col-sm-6  mb-5 mb-sm-2">
                                 <div class="position-relative image-hover">
                                     <img
-                                        src="{{ $content['world'][$i]->thumb_169 }}"
+                                        src="{{ $content['economics'][$i]->thumb_169 }}"
                                         class="img-fluid"
                                         alt="world-news"
                                     />
-                                    <span class="thumb-title">{{ $content['world'][$i]->name }}</span>
+                                    <span class="thumb-title">{{ $content['economics'][$i]->name }}</span>
                                 </div>
-                                <a class="color-black" href="{{ route('news.one', [$content['world'][$i]->slug, $content['world'][$i]->id]) }}">
+                                <a class="color-black" href="{{ route('news.one', [$content['economics'][$i]->slug, $content['economics'][$i]->id]) }}">
                                     <h5 class="font-weight-600 mt-3">
-                                        {{ $content['world'][$i]->title }}
+                                        {{ $content['economics'][$i]->title }}
                                     </h5>
                                     <p class="fs-15 font-weight-normal">
-                                        {{ $content['world'][$i]->excerpt }}
+                                        {{ $content['economics'][$i]->excerpt }}
                                     </p>
                                 </a>
                             </div>
@@ -272,7 +272,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="d-flex position-relative float-left">
-                        <h3 class="section-title">Выбор редакции</h3>
+                        <h3 class="section-title">Спорт</h3>
                     </div>
                 </div>
             </div>
@@ -285,15 +285,15 @@
                             <div class="col-sm-4  mb-5 mb-sm-2">
                                 <div class="position-relative image-hover">
                                     <img
-                                        src="{{ $content['publisher_choice'][$i]->thumb_square }}"
+                                        src="{{ $content['sports'][$i]->thumb_square }}"
                                         class="img-fluid"
                                         alt="world-news"
                                     />
-                                    <span class="thumb-title">{{ $content['publisher_choice'][$i]->name }}</span>
+                                    <span class="thumb-title">{{ $content['sports'][$i]->name }}</span>
                                 </div>
-                                <a class="color-black" href="{{ route('news.one', [$content['publisher_choice'][$i]->slug, $content['publisher_choice'][$i]->id]) }}">
+                                <a class="color-black" href="{{ route('news.one', [$content['sports'][$i]->slug, $content['sports'][$i]->id]) }}">
                                     <h5 class="font-weight-600 mt-3">
-                                        {{ $content['publisher_choice'][$i]->title }}
+                                        {{ $content['sports'][$i]->title }}
                                     </h5>
                                 </a>
                             </div>
@@ -307,15 +307,15 @@
                             <div class="col-sm-4  mb-5 mb-sm-2">
                                 <div class="position-relative image-hover">
                                     <img
-                                        src="{{ $content['publisher_choice'][$i]->thumb_square }}"
+                                        src="{{ $content['sports'][$i]->thumb_square }}"
                                         class="img-fluid"
                                         alt="world-news"
                                     />
-                                    <span class="thumb-title">{{ $content['publisher_choice'][$i]->name }}</span>
+                                    <span class="thumb-title">{{ $content['sports'][$i]->name }}</span>
                                 </div>
-                                <a class="color-black" href="{{ route('news.one', [$content['publisher_choice'][$i]->slug, $content['publisher_choice'][$i]->id]) }}">
+                                <a class="color-black" href="{{ route('news.one', [$content['sports'][$i]->slug, $content['sports'][$i]->id]) }}">
                                     <h5 class="font-weight-600 mt-3">
-                                        {{ $content['publisher_choice'][$i]->title }}
+                                        {{ $content['sports'][$i]->title }}
                                     </h5>
                                 </a>
                             </div>
@@ -337,11 +337,11 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="d-flex position-relative float-left">
-                                <h3 class="section-title">Рейтинговые</h3>
+                                <h3 class="section-title">Недвижимость</h3>
                             </div>
                         </div>
 
-                        @foreach($content['rating'] as $item)
+                        @foreach($content['realty'] as $item)
 
                             <div class="col-sm-12">
                                 <div class="border-bottom pb-3">

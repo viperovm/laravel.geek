@@ -16,13 +16,13 @@ class HomeController extends Controller
     {
         $request = News::query()->leftJoin('categories', 'news.category_id', '=', 'categories.id');
         $news_set = [
-            'most_commented' => $request->orderBy('comments', 'desc')->limit(4)->get(),
-            'slider' => $request->orderBy('views', 'desc')->limit(10)->get(),
-            'local' => $request->where('is_local', true)->orderBy('news.id', 'desc')->limit(5)->get(),
-            'most_fresh' => $request->orderBy('news.id', 'desc')->limit(4)->get(),
-            'publisher_choice' => $request->orderBy('img')->limit(6)->get(),
-            'rating' => $request->orderBy('rating', 'desc')->limit(6)->get(),
-            'world' => $request->where('is_local', true)->orderBy('news.id', 'desc')->limit(5)->get(),
+            'culture' => $request->where('category_id', 5)->orderBy('created_at')->limit(4)->get(),
+            'slider' => $request->where('category_id', 17)->orderBy('created_at')->limit(10)->get(),
+            'politics' => $request->where('category_id', 2)->orderBy('created_at')->limit(5)->get(),
+            'economics' => $request->where('category_id', 3)->orderBy('created_at')->limit(5)->get(),
+            'most_fresh' => $request->orderBy('created_at', 'desc')->limit(4)->get(),
+            'sports' => $request->where('category_id', 4)->orderBy('created_at')->limit(6)->get(),
+            'realty' => $request->where('category_id', 13)->orderBy('created_at')->limit(6)->get(),
         ];
 
         $content = array_merge(static::getContent(), $news_set);

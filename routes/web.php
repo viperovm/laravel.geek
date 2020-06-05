@@ -54,6 +54,8 @@ Route::group([
 ], function () {
     Route::get('/index', 'IndexController@index')->name('index');
 
+    Route::get('/parser', 'ParserController@index')->name('parser');
+
     Route::get('/category-management', 'CategoryController@index')->name('category-management');
     Route::get( '/create-category', 'CategoryController@create')->name('category-create');
     Route::match(['get', 'post'], '/store-category', 'CategoryController@store')->name('category-store');
